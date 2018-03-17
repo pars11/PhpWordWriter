@@ -40,9 +40,6 @@ class Login extends BaseController
         }
         else
         {
-            $process = 'Hata';
-            $processFunction = 'Login/error';
-            $this->logrecord($process,$processFunction);
             redirect('pageNotFound');
         }
     }
@@ -104,9 +101,6 @@ class Login extends BaseController
                 foreach ($result as $res)
                 {
                     $lastLogin = $this->login_model->lastLoginInfo($res->userId);
-                    
-                    $process = 'Giriş';
-                    $processFunction = 'Login/loginMe';
 
                     $sessionArray = array('userId'=>$res->userId,                    
                                             'role'=>$res->roleId,
@@ -120,8 +114,6 @@ class Login extends BaseController
                     $this->session->set_userdata($sessionArray);
 
                     unset($sessionArray['userId'], $sessionArray['isLoggedIn'], $sessionArray['lastLogin']);
-                    
-                    $this->logrecord($process,$processFunction);
 
                     redirect('/dashboard');
                 }
@@ -196,10 +188,6 @@ class Login extends BaseController
                     }
 
                     $sendStatus = resetPasswordEmail($data1);
-
-                    $process = 'Şifre Sıfırlama İsteği';
-                    $processFunction = 'Login/resetPasswordUser';
-                    $this->logrecord($process,$processFunction);
 
                     if($sendStatus){
                         $status = "send";
@@ -280,10 +268,6 @@ class Login extends BaseController
             if($is_correct == 1)
             {               
                 $this->login_model->createPasswordUser($email, $password);
-                
-                $process = 'Şifre Sıfırlama';
-                $processFunction = 'Login/createPasswordUser';
-                $this->logrecord($process,$processFunction);
 
                 $status = 'success';
                 $message = 'Şifre başarıyla değiştirildi';

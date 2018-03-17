@@ -1,9 +1,9 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>BSEU</b> Yönetim Paneli | V1.0
+        <b>PW</b> Yönetim Paneli | v1.0
     </div>
     <strong>Copyright &copy; 2018-2019
-        <a href="<?php echo base_url(); ?>">BSEU</a>
+        <a href="<?php echo base_url(); ?>">Pw</a>
     </strong> Tüm hakları saklıdır.
 </footer>
 

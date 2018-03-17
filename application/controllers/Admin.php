@@ -52,10 +52,6 @@ class Admin extends BaseController
 			$returns = $this->paginationCompress ( "userListing/", $count, 10 );
             
             $data['userRecords'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
-            
-            $process = 'Kullanıcı Listeleme';
-            $processFunction = 'Admin/userListing';
-            $this->logrecord($process,$processFunction);
 
             $this->global['pageTitle'] = 'BSEU : Kullanıcı Listesi';
             
@@ -108,9 +104,6 @@ class Admin extends BaseController
                 
                 if($result > 0)
                 {
-                    $process = 'Kullanıcı Ekleme';
-                    $processFunction = 'Admin/addNewUser';
-                    $this->logrecord($process,$processFunction);
 
                     $this->session->set_flashdata('success', 'Kullanıcı başarıyla oluşturuldu');
                 }
@@ -189,10 +182,6 @@ class Admin extends BaseController
                 
                 if($result == true)
                 {
-                    $process = 'Kullanıcı Güncelleme';
-                    $processFunction = 'Admin/editUser';
-                    $this->logrecord($process,$processFunction);
-
                     $this->session->set_flashdata('success', 'Kullanıcı başarıyla güncellendi');
                 }
                 else
@@ -217,11 +206,6 @@ class Admin extends BaseController
             
             if ($result > 0) {
                  echo(json_encode(array('status'=>TRUE)));
-
-                 $process = 'Kullanıcı Silme';
-                 $processFunction = 'Admin/deleteUser';
-                 $this->logrecord($process,$processFunction);
-
                 }
             else { echo(json_encode(array('status'=>FALSE))); }
     }

@@ -28,18 +28,13 @@ class User extends BaseController
     {
         $this->global['pageTitle'] = 'BSEU : Anasayfa';
 
-        $data['tasksCount'] = $this->user_model->tasksCount();
-        $data['finishedTasksCount'] = $this->user_model->finishedTasksCount();
-        $data['logsCount'] = $this->user_model->logsCount();
-        $data['usersCount'] = $this->user_model->usersCount();
-
         if ($this->getUserStatus() == TRUE)
         {
             $this->session->set_flashdata('error', 'Lütfen güvenliğiniz için öncelikle şifrenizi değiştiriniz.');
             redirect('loadChangePass');
         }
 
-        $this->loadViews("dashboard", $this->global, $data , NULL);
+        $this->loadViews("dashboard", $this->global, NULL , NULL);
     }
 
     /**
@@ -128,10 +123,6 @@ class User extends BaseController
             
             if($result == true)
             {
-                $process = 'Hesap Ayarları Güncelleme';
-                $processFunction = 'User/updateUser';
-                $this->logrecord($process,$processFunction);
-
                 $this->session->set_flashdata('success', 'Hesap Ayarlarınız başarıyla güncellendi');
             }
             else
@@ -191,10 +182,6 @@ class User extends BaseController
                 $result = $this->user_model->changePassword($this->vendorId, $usersData);
                 
                 if($result > 0) {
-
-                    $process = 'Şifre Değiştirme';
-                    $processFunction = 'User/changePassword';
-                    $this->logrecord($process,$processFunction);
 
                      $this->session->set_flashdata('success', 'Şifre değiştirme başarılı');
                      }

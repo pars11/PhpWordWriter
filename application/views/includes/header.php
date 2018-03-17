@@ -49,10 +49,10 @@
       <a href="<?php echo base_url(); ?>" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">
-          <b>BSE</b>U</span>
+          <b>Pw</b></span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-          <b>BSEU</b>YONETIM</span>
+          <b>PW</b>YONETIM</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
@@ -62,17 +62,6 @@
         </a>
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
-            <li class="dropdown tasks-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-history"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header"> Son Giriş :
-                  <i class="fa fa-clock-o"></i>
-                  <?= empty($last_login) ? "İlk Giriş" : $last_login; ?>
-                </li>
-              </ul>
-            </li>
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -141,8 +130,8 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history-backup">
-                  <i class="fa fa-archive"></i>
+                <a href="<?php echo base_url(); ?>print">
+                  <i class="fa fa-print"></i>
                   <span>Belge Yazdır</span>
                 </a>
               </li>
