@@ -216,56 +216,6 @@ class User extends BaseController
         
         $this->loadViews("404", $this->global, NULL, NULL);
     }
-
-    /**
-     * This function is used to finish tasks.
-     */
-    function endTask($taskId)
-    {
-            $taskInfo = array('statusId'=>2,'endDtm'=>date('Y-m-d H:i:s'));
-            
-            $result = $this->user_model->endTask($taskId, $taskInfo);
-            
-            if ($result > 0) {
-                 $process = 'Görev Bitirme';
-                 $processFunction = 'User/endTask';
-                 $this->logrecord($process,$processFunction);
-                 $this->session->set_flashdata('success', 'Görev başarıyla tamamlandı');
-                 if ($this->role != ROLE_EMPLOYEE){
-                    redirect('tasks');
-                 }
-                 else{
-                    redirect('etasks');
-                 }
-                }
-            else {
-                $this->session->set_flashdata('error', 'Görev tamamlama başarısız');
-                if ($this->role != ROLE_EMPLOYEE){
-                    redirect('tasks');
-                 }
-                 else{
-                    redirect('etasks');
-                 }
-            }
-    }
-
-    /**
-     * This function is used to open the tasks page for users (no edit/delete etc)
-     */
-    function etasks()
-    {
-            $data['taskRecords'] = $this->user_model->getTasks();
-
-            $process = 'Kullanıcı Tüm görevler';
-            $processFunction = 'User/etasks';
-            $this->logrecord($process,$processFunction);
-
-            $this->global['pageTitle'] = 'BSEU : Tüm Görevler';
-            
-            $this->loadViews("etasks", $this->global, $data, NULL);
-    }
-
-
 }
 
 ?>

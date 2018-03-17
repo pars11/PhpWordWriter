@@ -125,24 +125,6 @@
             </a>
           </li>
           <?php
-            // Rol definetion in application/config/constants.php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
-            {
-            ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>tasks">
-                <i class="fa fa-tasks"></i>
-                <span>Görevler</span>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>addNewTask">
-                <i class="fa fa-plus-circle"></i>
-                <span>Görev Ekle</span>
-              </a>
-            </li>
-            <?php
-            }
             if($role == ROLE_ADMIN)
             {
             ?>
@@ -159,21 +141,9 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history">
-                  <i class="fa fa-archive"></i>
-                  <span>Log Kayıtları</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="<?php echo base_url(); ?>log-history-upload">
-                  <i class="fa fa-upload"></i>
-                  <span>Yedek Yükle</span>
-                </a>
-              </li>
-              <li class="treeview">
                 <a href="<?php echo base_url(); ?>log-history-backup">
                   <i class="fa fa-archive"></i>
-                  <span>Log Kayıtları Yedek</span>
+                  <span>Belge Yazdır</span>
                 </a>
               </li>
               <?php
@@ -184,7 +154,7 @@
                 <li class="treeview">
                   <a href="<?php echo base_url(); ?>etasks">
                     <i class="fa fa-tasks"></i>
-                    <span>Görevler</span>
+                    <span>CALISAN</span>
                   </a>
                   <?php
             }

@@ -107,17 +107,6 @@ class Login_model extends CI_Model
     }
 
     /**
-     * This function used to save login information of user
-     * @param array $loginInfo : This is users login information
-     */
-    function loginsert($logInfo)
-    {
-        $this->db->trans_start();
-        $this->db->insert('tbl_log', $logInfo);
-        $this->db->trans_complete();
-    }
-
-    /**
      * This function is used to get last login info by user id
      * @param number $userId : This is user id
      * @return number $result : This is query result

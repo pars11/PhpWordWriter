@@ -183,25 +183,4 @@ class BaseController extends CI_Controller {
 		$this->global ['status'] = $this->status;
 		
 	}
-	
-	/**
-	 * This function insert into log to the log table
-	 */
-	function logrecord($process,$processFunction){
-		$this->datas();
-		$logInfo = array("userId"=>$this->vendorId,
-		"userName"=>$this->name,
-		"process"=>$process,
-		"processFunction"=>$processFunction,
-		"userRoleId"=>$this->role,
-		"userRoleText"=>$this->roleText,
-		"userIp"=>$_SERVER['REMOTE_ADDR'],
-		"userAgent"=>getBrowserAgent(),
-		"agentString"=>$this->agent->agent_string(),
-		"platform"=>$this->agent->platform()
-		);
-		
-		$this->load->model('login_model');
-		$this->login_model->loginsert($logInfo);
-	}
 }
