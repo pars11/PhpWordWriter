@@ -1,6 +1,8 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 require APPPATH . '/libraries/BaseController.php';
+require FCPATH . '/vendor/autoload.php';
+
 /**
  * Class : Admin (AdminController)
  * Admin class to control to authenticate admin credentials and include admin functions.
