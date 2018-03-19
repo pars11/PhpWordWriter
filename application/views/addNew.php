@@ -6,16 +6,11 @@
             <small>Ekle / Düzenle</small>
         </h1>
     </section>
-
     <section class="content">
-
         <div class="row">
             <!-- left column -->
             <div class="col-md-8">
                 <!-- general form elements -->
-
-
-
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Kullanıcı bilgilerini giriniz</h3>
@@ -31,7 +26,6 @@
                                         <label for="fname">Ad Soyad</label>
                                         <input type="text" class="form-control required" value="<?php echo set_value('fname'); ?>" id="fname" name="fname" maxlength="128">
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">

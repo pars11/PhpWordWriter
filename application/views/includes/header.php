@@ -130,6 +130,12 @@
                 </a>
               </li>
               <li class="treeview">
+                <a href="<?php echo base_url(); ?>settings">
+                  <i class="fa fa-cogs"></i>
+                  <span>Ayarlar</span>
+                </a>
+              </li>
+              <li class="treeview">
                 <a href="<?php echo base_url(); ?>print">
                   <i class="fa fa-print"></i>
                   <span>Belge Yazdır</span>

@@ -211,4 +211,24 @@ class Admin extends BaseController
                 }
             else { echo(json_encode(array('status'=>FALSE))); }
     }
+
+    /**
+     * This function is used to open the setting view page
+     */
+
+    function settings()
+    {
+        $this->global['pageTitle'] = 'PW : Ayarlar';
+        
+        $this->loadViews("settings", $this->global, NULL, NULL);
+    }
+
+    /**
+     * This function is used to insert settings
+     */
+
+    function insertSettings()
+    {
+
+    }
 }
