@@ -25,6 +25,19 @@ CREATE TABLE `tbl_reset_password` (
 
 -- --------------------------------------------------------
 
+
+--
+-- Table structure for table `tbl_pw_settings`
+--
+
+CREATE TABLE `tbl_pw_settings` (
+  `id` bigint(20) NOT NULL,
+  `settingname` varchar(128) NOT NULL,
+  `areaid` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_roles`
 --
@@ -84,6 +97,12 @@ ALTER TABLE `tbl_reset_password`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_pw_settings`
+--
+ALTER TABLE `tbl_pw_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
@@ -104,16 +123,20 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_reset_password`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_pw_settings`
+--
+ALTER TABLE `tbl_pw_settings`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tbl_roles`
 --
 ALTER TABLE `tbl_roles`
-  MODIFY `roleId` tinyint(4) NOT NULL AUTO_INCREMENT COMMENT 'role id', AUTO_INCREMENT=4;
+  MODIFY `roleId` tinyint(4) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
