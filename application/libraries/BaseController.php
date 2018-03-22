@@ -95,10 +95,6 @@ class BaseController extends CI_Controller {
 	 */
 	function logout() {
 
-		$process = 'Çıkış';
-        $processFunction = 'BaseController/logout';
-        $this->logrecord($process,$processFunction);
-
 		$this->session->sess_destroy ();
 		
 		redirect ( 'login' );

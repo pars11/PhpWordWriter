@@ -209,6 +209,17 @@ class User_model extends CI_Model
 
         return $query->row();
     }
+
+    function insertSettings($data)
+    {
+        $result = $this->db->insert('tbl_pw_settings', $data);
+
+        if($result) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }
 
   

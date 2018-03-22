@@ -2,74 +2,82 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            <i class="fa fa-cogs"></i> Ayarlar
-            <small>Ayar Ekle / Düzenle</small>
+        Php Word Writer
+        <small>Ayar Ekleme İşlemi</small>
         </h1>
     </section>
     <section class="content">
         <div class="row">
-            <!-- left column -->
-            <div class="col-md-12">
-                <!-- general form elements -->
-                <div class="box box-primary">
+            <div class="col-xs-12">
+                <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Ayar bilgilerini giriniz</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <?php $this->load->helper("form"); ?>
-                    <form name="add_name" id="add_name">
-					<div class="table-responsive">
-						<table class="table table-bordered" id="dynamic_field">
-                            <tr>
-								<td><input type="text" name="settingid" placeholder="Ayar adını giriniz" class="form-control name_list" /></td>
-							</tr>
-							<tr>
-								<td><input type="text" name="name[]" placeholder="Alan ID giriniz" class="form-control name_list" /></td>
-								<td><button type="button" name="add" id="add" class="btn btn-success">Alan Ekle</button></td>
-							</tr>
-
-						</table>
-						<input type="button" name="submit" id="submit" class="btn btn-info" value="Gönder" />
-					</div>
-				</form>
-                </div>
-            </div>
-            <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
+                        <h3 class="box-title">Dosya yükleme işlemi için doc veya docx dosyasınızı seçiniz</h3>
+                        <div class="box-tools">
                         </div>
                     </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <div class="panel-body">
+                            <?php
+                    $this->load->helper('form');
+                    $error = $this->session->flashdata('error');
+                    if($error)
+                    {
+                ?>
+                                <div class="alert alert-danger alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <?php echo $this->session->flashdata('error'); ?>
+                                </div>
+                                <?php } ?>
+                                <?php  
+                    $success = $this->session->flashdata('success');
+                    if($success)
+                    {
+                ?>
+                                <div class="alert alert-success alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <?php echo $this->session->flashdata('success'); ?>
+                                </div>
+                                <?php } ?>
+                                <form role="form" action="<?php echo base_url() ?>insertSettings" method="post" id="insertSettings" role="form" enctype="multipart/form-data"
+                                    accept-charset="utf-8">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="fileup">Dosya seç</label>
+                                                        <input type="file" id="fileup" name="fileup" class="form-control-file">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="settingname">Ayar Adı</label>
+                                                        <input type="text" class="form-control required" id="settingname" name="settingname" maxlength="20">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="areaid">Alan ID</label>
+                                                        <input type="text" class="form-control required" id="areaid" name="areaid" maxlength="20">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="areaid2">Alan ID</label>
+                                                        <input type="text" class="form-control required" id="areaid2" name="areaid2" maxlength="20">
+                                                    </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+
+                                    <div class="box-footer">
+                                        <input type="submit" class="btn btn-primary" value="Yükle" />
+                                        <input type="reset" class="btn btn-default" value="Sıfırla" />
+                                    </div>
+                                </form>
+
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
         </div>
     </section>
 </div>
-<script>
-$(document).ready(function(){
-	var i=1;
-	$('#add').click(function(){
-		i++;
-		$('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Alan ID giriniz" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-	});
-	
-	$(document).on('click', '.btn_remove', function(){
-		var button_id = $(this).attr("id"); 
-		$('#row'+button_id+'').remove();
-	});
-	
-	$('#submit').click(function(){		
-		$.ajax({
-			url:"<?php echo base_url() ?>CONTROLLER",
-			method:"POST",
-			data:$('#add_name').serialize(),
-			success:function(data)
-			{
-				alert(data);
-				$('#add_name')[0].reset();
-			}
-		});
-	});
-	
-});
-</script>

@@ -229,6 +229,45 @@ class Admin extends BaseController
 
     function insertSettings()
     {
+        $settingname=$this->input->post('settingname');
+        $areaid=$this->input->post('areaid');
+        $areaid2=$this->input->post('areaid2');
 
-    }
+        if($settingname == "" || $areaid == "" || $areaid2 == "")
+        {
+            $this->session->set_flashdata('error','Lütfen ayar adını ve alan idlerini giriniz');
+            redirect('settings');
+        }
+            $config = array(
+                'upload_path' => "./uploads/",
+                'allowed_types' => 'doc|docx',
+                'overwrite' => FALSE,
+                'max_size' => "20048000", // Can be set to particular file size , here it is 20 MB(20048 Kb)
+                );
+                
+        $this->load->library('upload', $config);
+        $upload= $this->upload->do_upload('fileup');
+        if($upload==false){
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_flashdata('error',$error['error']);
+            redirect('settings');
+        }else{
+            $data = $this->upload->data();
+            $filepath = $data['full_path'];
+            $data = array('settingname'=>$settingname, 'areaid'=>$areaid,
+            'areaid2'=>$areaid, 'filepath'=>$filepath);
+            $datainsert = $this->user_model->insertSettings($data);
+        if($datainsert)
+        {
+            $this->session->set_flashdata('success','Ayar giriş işlemi başarılı');
+            redirect('settings');
+        }
+            else{
+                $this->session->set_flashdata('error','Ayar giriş işlemi başarısız');
+                redirect('settings');
+            }
+
+        }
+
+        }
 }

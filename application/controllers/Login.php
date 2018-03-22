@@ -100,8 +100,6 @@ class Login extends BaseController
             {
                 foreach ($result as $res)
                 {
-                    $lastLogin = $this->login_model->lastLoginInfo($res->userId);
-
                     $sessionArray = array('userId'=>$res->userId,                    
                                             'role'=>$res->roleId,
                                             'roleText'=>$res->role,

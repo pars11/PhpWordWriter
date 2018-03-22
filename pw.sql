@@ -33,7 +33,9 @@ CREATE TABLE `tbl_reset_password` (
 CREATE TABLE `tbl_pw_settings` (
   `id` bigint(20) NOT NULL,
   `settingname` varchar(128) NOT NULL,
-  `areaid` varchar(128) NOT NULL
+  `areaid` varchar(128) NOT NULL,
+  `areaid2` varchar(128) NOT NULL,
+  `filepath` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
