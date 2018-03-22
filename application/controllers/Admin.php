@@ -268,6 +268,15 @@ class Admin extends BaseController
             }
 
         }
-
         }
+
+    function printFile()
+    {
+        $data['settings'] = $this->user_model->getSettings();
+
+        $this->global['pageTitle'] = 'PW : Yazdır';
+        
+        $this->loadViews("printFile", $this->global, $data, NULL);
+    }
+
 }

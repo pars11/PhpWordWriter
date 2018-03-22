@@ -136,7 +136,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="<?php echo base_url(); ?>print">
+                <a href="<?php echo base_url(); ?>printFile">
                   <i class="fa fa-print"></i>
                   <span>Belge Yazdır</span>
                 </a>

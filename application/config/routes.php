@@ -23,7 +23,7 @@ $route['editOld/(:num)'] = "admin/editOld/$1";
 $route['editUser'] = "admin/editUser";
 $route['deleteUser'] = "admin/deleteUser";
 $route['settings'] = "admin/settings";
-$route['print'] = "admin/print";
+$route['printFile'] = "admin/printFile";
 $route['insertSettings'] = "admin/insertSettings";
 
 /*********** MANAGER CONTROLLER ROUTES *******************/

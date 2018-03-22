@@ -220,6 +220,15 @@ class User_model extends CI_Model
             return FALSE;
         }
     }
+
+    function getSettings()
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_pw_settings');
+        $query = $this->db->get();
+        
+        return $query->result();
+    }
 }
 
   
