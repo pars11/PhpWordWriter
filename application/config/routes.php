@@ -25,6 +25,7 @@ $route['deleteUser'] = "admin/deleteUser";
 $route['settings'] = "admin/settings";
 $route['printFile'] = "admin/printFile";
 $route['insertSettings'] = "admin/insertSettings";
+$route['printDoc'] = "admin/printDoc";
 
 /*********** MANAGER CONTROLLER ROUTES *******************/
 $route['tasks'] = "manager/tasks";

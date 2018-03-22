@@ -229,6 +229,17 @@ class User_model extends CI_Model
         
         return $query->result();
     }
+
+    function getFileSetting($fileid)
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_pw_settings');
+        $this->db->where('tbl_pw_settings.id', $fileid);
+        $this->db->limit(1);
+        $query = $this->db->get();
+        
+        return $query->row();
+    }
 }
 
   

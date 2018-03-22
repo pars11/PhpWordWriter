@@ -243,8 +243,9 @@ class Admin extends BaseController
                 'allowed_types' => 'doc|docx',
                 'overwrite' => FALSE,
                 'max_size' => "20048000", // Can be set to particular file size , here it is 20 MB(20048 Kb)
+                'file_name'  => uniqid()
                 );
-                
+
         $this->load->library('upload', $config);
         $upload= $this->upload->do_upload('fileup');
         if($upload==false){
@@ -255,7 +256,7 @@ class Admin extends BaseController
             $data = $this->upload->data();
             $filepath = $data['full_path'];
             $data = array('settingname'=>$settingname, 'areaid'=>$areaid,
-            'areaid2'=>$areaid, 'filepath'=>$filepath);
+            'areaid2'=>$areaid2, 'filepath'=>$filepath);
             $datainsert = $this->user_model->insertSettings($data);
         if($datainsert)
         {
@@ -277,6 +278,33 @@ class Admin extends BaseController
         $this->global['pageTitle'] = 'PW : Yazdır';
         
         $this->loadViews("printFile", $this->global, $data, NULL);
+    }
+
+    function printDoc()
+    {
+        $settingid=$this->input->post('settingid');
+        $areaid=$this->input->post('areaid');
+        $areaid2=$this->input->post('areaid2');
+
+        if($settingid == 0)
+        {
+            $this->session->set_flashdata('error','Lütfen bir ayar seçiniz');
+                redirect('printFile');
+        }
+        else if($areaid == "" || $areaid2 == "")
+        {
+            $this->session->set_flashdata('error','Lütfen alan değerlerini giriniz');
+            redirect('printFile');
+        }
+
+        $getFileSetting = $this->user_model->getFileSetting($settingid);
+
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($getFileSetting->filepath);
+                        $templateProcessor->setValue($getFileSetting->areaid,$areaid.' ');
+                        $templateProcessor->setValue($getFileSetting->areaid2,$areaid2.' ');
+                        $templateProcessor->saveAs('Belge.docx');
+                        $this->load->helper('download');
+                        force_download('Belge.docx', file_get_contents('Belge.docx'));
     }
 
 }

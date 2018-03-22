@@ -38,14 +38,14 @@
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                                 <?php } ?>
-                                <form role="form" action="<?php echo base_url() ?>insertSettings" method="post" id="insertSettings" role="form" enctype="multipart/form-data"
+                                <form role="form" action="<?php echo base_url() ?>printDoc" method="post" id="printDoc" role="form" enctype="multipart/form-data"
                                     accept-charset="utf-8">
                                     <div class="box-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                             <div class="form-group">
-                                        <label for="role">Ayar</label>
-                                        <select class="form-control required" id="role" name="role">
+                                        <label for="settingid">Ayar</label>
+                                        <select class="form-control required" id="settingid" name="settingid">
                                             <option value="0">Ayar seçiniz</option>
                                             <?php
                                             if(!empty($settings))
